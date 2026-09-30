@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Personas - Movil01</string>
+    <string name="title_activity_main">Personas</string>
+    <string name="title_activity_nueva_persona">Nueva persona</string>
+    <string name="nombre_hint">Nombre</string>
+    <string name="apellido_hint">Apellido</string>
+    <string name="fechanac_hint">Fecha de nacimiento</string>
+    <string name="direccion_hint">Direccion</string>
+    <string name="phone_hint">Teléfono</string>
+    <string name="email_hint">Correo</string>
+    <string name="button_save_person">Agregar Persona</string>
+    <string name="empty_list_message">No hay personas registradas</string>
+    <string name="person_saved_success">Persona guardada exitosamente</string>
+    <string name="person_saved_error">Error al guardar la persona</string>
+    <string name="validation_required_fields">Por favor, llene los campos obligatorios (Nombre y Apellido)</string>
+    <string name="label_correo">Correo: %1$s</string>
+    <string name="label_telefono">Teléfono: %1$s</string>
+    <string name="label_fecha_nac">F. Nac: %1$s</string>
+    <string name="label_direccion">Dir: %1$s</string>
+</resources>
