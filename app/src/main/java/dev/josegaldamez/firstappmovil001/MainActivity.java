@@ -25,12 +25,13 @@ import dev.josegaldamez.firstappmovil001.views.ActivityPersonas;
 
 public class MainActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerViewPersonas;
+    private RecyclerView recyclerListViewPersonas;
     private TextView tvEmpty;
 
     private PersonasController personasController;
     private PersonasAdapter adapter;
 
+    // T001 - Aquí comienza al aplicación
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,14 +40,15 @@ public class MainActivity extends AppCompatActivity {
 
         personasController = new PersonasController(this);
 
-        recyclerViewPersonas = findViewById(R.id.recyclerViewPersonas);
+        recyclerListViewPersonas = findViewById(R.id.recyclerViewPersonas);
         tvEmpty = findViewById(R.id.tvEmpty);
         FloatingActionButton fabAddPerson = findViewById(R.id.fabAddPerson);
 
-        recyclerViewPersonas.setLayoutManager(new LinearLayoutManager(this));
+        recyclerListViewPersonas.setLayoutManager(new LinearLayoutManager(this));
         adapter = new PersonasAdapter(new ArrayList<>());
-        recyclerViewPersonas.setAdapter(adapter);
+        recyclerListViewPersonas.setAdapter(adapter);
 
+        // T008 - Este botón abre la vista de nueva persona
         fabAddPerson.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, ActivityPersonas.class);
             startActivity(intent);
@@ -59,22 +61,24 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    // T002 - Esto se ejecuta cuando la pantalla pasa a primer plano
     @Override
     protected void onResume() {
         super.onResume();
-        cargarPersonas();
+        cargarPersonas(); // T003 - Esto busca las personas ya guardadas
     }
 
     private void cargarPersonas() {
+        // T009 - El controlador es quien le envía las instrucciones a la base de datos.
         List<Personas> lista = personasController.obtenerPersonas();
         adapter.setPersonasList(lista);
 
-        if (lista.isEmpty()) {
+        if (lista.isEmpty()) { // T004 - Si no hay personas, muestra un mensaje diciendo que está vacío
             tvEmpty.setVisibility(View.VISIBLE);
-            recyclerViewPersonas.setVisibility(View.GONE);
+            recyclerListViewPersonas.setVisibility(View.GONE);
         } else {
             tvEmpty.setVisibility(View.GONE);
-            recyclerViewPersonas.setVisibility(View.VISIBLE);
+            recyclerListViewPersonas.setVisibility(View.VISIBLE); // T005 - Si hay personas, entonces las muestra en una lista
         }
     }
 }

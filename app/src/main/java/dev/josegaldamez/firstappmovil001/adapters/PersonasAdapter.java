@@ -30,12 +30,17 @@ public class PersonasAdapter extends RecyclerView.Adapter<PersonasAdapter.Person
     @NonNull
     @Override
     public PersonaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        // T006 - Esto puede ser confuso, pero simplemente entender que
+        // la reciclyListView está conectada con este Adaptador,
+        // en este punto le decimos que por cada item de la lista utilice el layout item_persona.xml
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_persona, parent, false);
         return new PersonaViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull PersonaViewHolder holder, int position) {
+        // T007 - cada elemento de personasList se convierte en un elemento de la lista
+        // holder tiene las propiedades de la vista item_persona.xml
         Personas persona = personasList.get(position);
         Context context = holder.itemView.getContext();
 
